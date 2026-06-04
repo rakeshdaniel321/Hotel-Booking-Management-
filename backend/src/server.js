@@ -20,7 +20,7 @@ const upload = multer({storage:multer.memoryStorage()});
 await connectDb();
 
 //muliple origins
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173','https://hotel-booking-management-navy.vercel.app'];
 
 
 //middleware
