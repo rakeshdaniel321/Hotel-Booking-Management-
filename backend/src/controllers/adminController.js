@@ -51,7 +51,7 @@ class AuthController {
       res.cookie("adminToken", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        sameSite: "none",
         maxAge: 30 * 60 * 1000
       });
 
@@ -76,7 +76,7 @@ class AuthController {
       res.clearCookie("adminToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict"
+        sameSite: "none"
       });
 
       return res.status(200).json({
