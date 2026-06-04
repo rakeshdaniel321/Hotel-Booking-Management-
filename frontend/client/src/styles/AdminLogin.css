@@ -1,0 +1,146 @@
+/* ==========================================
+   1. BASE RESET & PAGE CONTAINER
+   ========================================== */
+.admin-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   2. MOBILE FIRST DESIGN (Default Layout)
+   ========================================== */
+.admin-login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 400px; /* மொபைலில் திரையைத் தாண்டாமல் இருக்க */
+  padding: 30px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.admin-login-card h1 {
+  font-size: 24px;
+  color: #333333;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.admin-login-card p {
+  font-size: 14px;
+  color: #666666;
+  margin: 0 0 24px 0;
+}
+
+/* ==========================================
+   3. ERROR BOX STYLING
+   ========================================== */
+.error-box {
+  background-color: #ffebe9;
+  color: #ff3b30;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ffdad6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* ==========================================
+   4. FORM & INPUT BOX STYLING
+   ========================================== */
+.admin-login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 0 14px;
+  height: 48px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Lucide Icon கலர் */
+.input-box svg {
+  color: #6c757d;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.input-box input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  color: #495057;
+  outline: none;
+}
+
+.input-box input::placeholder {
+  color: #adb5bd;
+}
+
+/* இன்ஜின் போக்கஸ் செய்யும்போது பார்டர் நிறம் மாறும் */
+.input-box:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  background-color: #ffffff;
+}
+
+.input-box:focus-within svg {
+  color: #007bff;
+}
+
+/* ==========================================
+   5. BUTTON STYLING
+   ========================================== */
+.admin-login-card button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.admin-login-card button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.admin-login-card button:disabled {
+  background-color: #a0cfff;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   6. DESKTOP LAYOUT (Media Query)
+   ========================================== */
+@media (min-width: 768px) {
+  .admin-login-card {
+    max-width: 450px; 
+    padding: 40px 40px; 
+    border-radius: 16px;
+  }
+
+  .admin-login-card h1 {
+    font-size: 28px; 
+  }
+}

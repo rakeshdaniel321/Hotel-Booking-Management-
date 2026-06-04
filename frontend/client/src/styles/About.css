@@ -1,0 +1,197 @@
+/* ==========================================================================
+   1. SECTION CONTAINER & PERSPECTIVE (3D செட்டப்பிற்கான அடிப்படை)
+   ========================================================================== */
+.about-section {
+  padding: 80px 20px;
+  background: radial-gradient(circle at 90% 10%, #ffffff 0%, #f8fafc 60%, #f1f5f9 100%);
+  overflow: hidden;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  perspective: 1500px; /* 3D எஃபெக்ட் ஆழமாகத் தெரிய இது மிக முக்கியம் */
+}
+
+/* ==========================================================================
+   2. DYNAMIC GRID LAYOUT (Default Mobile First)
+   ========================================================================== */
+.about-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr; /* மொபைலில் சிங்கிள் காலம் */
+  gap: 40px;
+  align-items: center;
+}
+
+/* ==========================================================================
+   3. 3D IMAGE CARD EFFECTS (வன்பொருள் முடுக்கத்துடன் - Hardware Accelerated)
+   ========================================================================== */
+.about-image {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  /* 3D சுழற்சி மற்றும் நிழல் அமைப்புகள் */
+  transform: rotateY(5deg) rotateX(3deg) translateZ(0);
+  transform-style: preserve-3d;
+  box-shadow: -20px 20px 40px rgba(0, 0, 0, 0.08), 
+              0 1px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform; /* பிரவுசர் லேக் ஆகாமல் மிக வேகமாக இயங்க உதவும் */
+}
+
+/* இமேஜ் மீது மவுஸ் வைக்கும் போது 3D கோணம் மாறும் (Dynamic Parallax Hover) */
+.about-image:hover {
+  transform: rotateY(-5deg) rotateX(-3deg) scale(1.02) translateZ(20px);
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* புகைப்படத்தின் பின்னால் இருக்கும் மாடர்ன் 3D மிதக்கும் வடிவமைப்பு (Background Backdrop) */
+.about-image::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  border: 2px dashed #007bff;
+  z-index: -1;
+  transform: translateZ(-30px); /* இமேஜிற்கு பின்னால் ஆழத்தில் தள்ளப்படும் */
+  transition: all 0.5s ease;
+  opacity: 0.4;
+}
+
+.about-image:hover::before {
+  transform: translateZ(-10px) translate(25px, 25px);
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   4. DYNAMIC TEXT CONTENT STYLING
+   ========================================================================== */
+.about-text {
+  text-align: left;
+  transform: translateZ(10px);
+}
+
+.section-subtitle {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #007bff; /* மாடர்ன் ராயல் ப்ளூ */
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.about-text h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+/* ==========================================================================
+   5. CUISINE TAGS (Interactive Glass Badges)
+   ========================================================================== */
+.cuisine-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.tag {
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+/* டேக் மீது மவுஸ் வைக்கும் போது எழும்பும் 3D எஃபெக்ட் */
+.tag:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+}
+
+/* ==========================================================================
+   6. DESKTOP PERFECT LAYOUT BREAKPOINT (768px & Above)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .about-section {
+    padding: 120px 40px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1fr; /* டெஸ்க்டாப்பில் 2 காலம்களாக பிரியும் */
+    gap: 80px;
+  }
+
+  .about-text h2 {
+    font-size: 3rem; /* பெரிய கம்பீரமான எழுத்து வடிவம் */
+  }
+
+  .about-image img {
+    height: 480px; /* டெஸ்க்டாப்பில் பிக்சல் உடையாமல் இருக்க பிக்ஸட் ஹைட் */
+  }
+}
+
+/* ==========================================================================
+   7. MOBILE MAX PERFORMANCE BREAKPOINT (480px & Below)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 60px 16px;
+  }
+
+  /* மொபைலில் 3D கணக்கீடுகள் லேக் (Lag) ஆகாமல் இருக்க சுழற்சிகள் ரத்து செய்யப்படுகிறது */
+  .about-image {
+    transform: none !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .about-image::before {
+    display: none; /* மொபைல் ஸ்பீடைக் கூட்ட பின்னால் இருக்கும் பார்டர் நீக்கப்படுகிறது */
+  }
+
+  .about-text h2 {
+    font-size: 1.85rem;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tag {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+}

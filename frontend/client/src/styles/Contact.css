@@ -1,0 +1,231 @@
+/* ==========================================================================
+   1. MAIN WRAPPER & GLASS CARD DESIGN (Flipkart & Google Premium Look)
+   ========================================================================== */
+.form-wrapper {
+  width: 100%;
+  max-width: 450px; /* டெஸ்க்டாப்பில் கூகுள் லாகின் கார்டு போன்ற கச்சிதமான அளவு */
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb; /* லைட் கிளாஸ் பார்டர் */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 
+              0 1px 8px rgba(0, 0, 0, 0.02); /* சாஃப்ட் கூகுள் ஸ்டைல் ஷேடோ */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.form-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* ஹோவர் செய்யும்போது கார்டு எழும்பும் */
+}
+
+/* தலைப்பு (Header Title) */
+.form-wrapper h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827; /* மாடர்ன் டார்க் கிரே */
+  letter-spacing: -0.5px;
+}
+
+/* சப்-டைட்டில் (Sub-title) */
+.section-p-sub {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   2. FORM & GROUP LAYOUT
+   ========================================================================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* லேபிள்கள் (Flipkart/Google Flat Style) */
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4b5563; /* சாஃப்ட் டெக்ஸ்ட் */
+  text-align: left;
+}
+
+/* ==========================================================================
+   3. INPUT & TEXTAREA STYLING (Premium Input Matrix)
+   ========================================================================== */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #1f2937;
+  background: #f9fafb; /* ஃபிளிப்கார்ட் போன்ற க்ளீன் பேக்ரவுண்ட் */
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* இன்புட் பாக்ஸ் மீது மவுஸ் வைக்கும் போது (Hover State) */
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #9ca3af;
+  background: #f3f4f6;
+}
+
+/* கிளிக் செய்து டைப் செய்யும் போது (Google Blue / Flipkart Orange Focus Effect) */
+.form-group input:focus,
+.form-group textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb; /* கூகுள் பிராண்ட் நீல நிறம் (உங்களுக்கு Flipkart வேண்டுமானால் #ff6100 கொடுக்கலாம்) */
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12); /* க்ளீன் க்ளோவ் எஃபெக்ட் */
+}
+
+/* ==========================================================================
+   4. BUTTON DESIGN (Flat Premium Style)
+   ========================================================================== */
+.btn {
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: #2563eb; /* கூகுள்/ஃபிளிப்கார்ட் ராயல் ப்ளூ தீம் */
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* லோடிங்/டிஸேபிள் நிலை (Loading State Lock) */
+.btn-primary:disabled {
+  background: #93c5fd;
+  color: #ffffff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   5. ALERT & ERROR UTILITIES
+   ========================================================================== */
+/* வெற்றிகரமான மெசேஜ் பாக்ஸ் */
+.alert-success {
+  padding: 16px 20px;
+  text-align: center;
+  border-radius: 14px;
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.05);
+}
+
+/* தவறான இன்புட் எரர் பார்டர் */
+.input-error {
+  border: 1.5px solid #dc2626 !important;
+  background: #fff8f8 !important;
+}
+
+/* எரர் டெக்ஸ்ட் */
+.error-text {
+  color: #dc2626;
+  margin-top: 5px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   6. TABLET RESPONSIVE BREAKPOINT (768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+  
+  .form-wrapper h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ==========================================================================
+   7. MOBILE PERFECT RESPONSIVE BREAKPOINT (480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .form-wrapper {
+    padding: 24px 16px;
+    border-radius: 16px;
+    box-shadow: none; /* மொபைல் திரையில் கார்டை முழு பிளாட் ஆக்குவது கூகுள் ஸ்டைல் */
+    border: none; /* மொபைலில் பார்டர்லெஸ் லுக் */
+    background: transparent; /* முழு திரைக்கும் கச்சிதமாகப் பொருந்த */
+  }
+
+  .form-wrapper h3 {
+    font-size: 1.45rem;
+    text-align: left; /* மொபைலில் கூகுள் லாகின் போல இடது பக்கம் திரும்புவது மாடர்ன் லுக் */
+  }
+
+  .section-p-sub {
+    text-align: left;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .btn-primary {
+    padding: 12px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,192 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+  margin-top:80px;
+
+  background:linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b
+  );
+
+  color:white;
+
+  overflow:hidden;
+  
+  position:relative;
+}
+
+/* Glow Effect */
+
+.footer::before{
+  content:"";
+
+  position:absolute;
+
+  width:800px;
+  height:400px;
+
+  background: red;
+ cursor: default;
+ 
+  border-radius:50%;
+
+  top:-100px;
+  right:-100px;
+
+  filter:blur(80px);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.footer-container{
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:60px 20px 40px;
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+   
+  background-color: rgba(239,68,68,.15);
+  gap:40px;
+
+  position:relative;
+  z-index:2;
+}
+
+/* =========================
+   INFO SECTION
+========================= */
+
+.footer-info,
+.footer-hours{
+  background:rgba(255,255,255,.05);
+
+  backdrop-filter:blur(12px);
+
+  padding:25px;
+
+  border-radius:20px;
+
+  transition:.4s;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+.footer-info:hover,
+.footer-hours:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 25px 45px rgba(0,0,0,.35);
+}
+
+.footer-info h3{
+  color:#ef4444;
+
+  margin-bottom:15px;
+
+  font-size:1.8rem;
+}
+
+.footer-hours h4{
+  color:#f8fafc;
+
+  margin-bottom:15px;
+
+  font-size:1.3rem;
+}
+
+.footer-info p,
+.footer-hours p{
+  color:#cbd5e1;
+
+  line-height:1.8;
+}
+
+/* =========================
+   BOTTOM
+========================= */
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+
+  text-align:center;
+
+  padding:20px;
+
+  color: #94a3b8;
+  
+
+  font-size:.95rem;
+
+  position:relative;
+  z-index:2;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:768px){
+
+  .footer-container{
+    grid-template-columns:1fr;
+  }
+
+  .footer-info h3{
+    font-size:1.6rem;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  .footer{
+    margin-top:10px;
+  }
+
+  .footer-container{
+    padding:40px 15px 30px;
+    gap:20px;
+  }
+
+  .footer-info,
+  .footer-hours{
+    padding:20px;
+    border-radius:16px;
+  }
+
+  .footer-info h3{
+    font-size:1.4rem;
+  }
+
+  .footer-hours h4{
+    font-size:1.1rem;
+  }
+
+  .footer-info p,
+  .footer-hours p{
+    font-size:.9rem;
+  }
+
+  .footer-bottom{
+    font-size:.8rem;
+    padding:15px;
+   
+  }
+
+}

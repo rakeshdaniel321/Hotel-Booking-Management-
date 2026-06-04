@@ -1,0 +1,214 @@
+/* =========================
+   MENU PAGE
+========================= */
+
+.menu-page {
+  padding: 2rem 1rem 6rem;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* Header */
+
+.menu-page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.menu-page-header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.menu-page-header p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   CATEGORY SECTION
+========================= */
+
+.menu-category-section {
+  margin-bottom: 4rem;
+}
+
+.category-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 1.5rem;
+  padding-left: 10px;
+  border-left: 5px solid #ef4444;
+}
+
+/* =========================
+   MENU GRID
+========================= */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 25px;
+}
+
+/* =========================
+   MENU CARD
+========================= */
+
+.menu-card {
+  background: white;
+
+  border-radius: 24px;
+
+  padding: 20px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: all .35s ease;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.08),
+    0 2px 5px rgba(0,0,0,.05);
+
+  transform-style: preserve-3d;
+}
+
+/* 3D Top Glow */
+
+.menu-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: -60%;
+  left: -30%;
+
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      rgba(239,68,68,.15),
+      transparent
+    );
+
+  transition: .5s;
+}
+
+.menu-card:hover::before {
+  transform: scale(1.3);
+}
+
+.menu-card:hover {
+  transform:
+    translateY(-10px)
+    rotateX(5deg);
+
+  box-shadow:
+    0 25px 40px rgba(0,0,0,.15),
+    0 10px 20px rgba(239,68,68,.15);
+}
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.menu-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.menu-item-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.menu-item-price {
+  background: #ef4444;
+  color: white;
+
+  padding: 6px 14px;
+
+  border-radius: 999px;
+
+  font-size: .9rem;
+  font-weight: 700;
+
+  box-shadow:
+    0 6px 15px rgba(239,68,68,.35);
+}
+
+.menu-item-description {
+  color: #64748b;
+  line-height: 1.7;
+  font-size: .95rem;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .menu-page {
+    padding: 1rem 0.8rem 7rem;
+  }
+
+  .menu-page-header h1 {
+    font-size: 2rem;
+  }
+
+  .menu-page-header p {
+    font-size: .95rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card {
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-5px);
+  }
+
+}
+
+/* =========================
+   LAPTOP
+========================= */
+
+@media(min-width:992px){
+
+  .menu-grid {
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+}
+
+/* =========================
+   LARGE SCREEN
+========================= */
+
+@media(min-width:1400px){
+
+  .menu-grid {
+    grid-template-columns:
+      repeat(4,1fr);
+  }
+
+}
