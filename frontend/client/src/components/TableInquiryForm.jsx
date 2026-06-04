@@ -1,7 +1,7 @@
-
 import React, { useState, useCallback } from 'react';
+import api from '../utils/api.js';
+import '../styles/TableInquiryForm.css';
 
-import '../styles/TableInquiryForm.css'
 const TableInquiryForm = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', date: '', guests: 2 });
   const [screenshot, setScreenshot] = useState(null);
@@ -33,13 +33,15 @@ const TableInquiryForm = () => {
         dataPayload.append('screenshot', screenshot);
       }
 
-      const response = await fetch('http://localhost:8000/api/v1/inquiries', {
-        method: 'POST',
-        body: dataPayload,
+      const response = await api.post('/api/v1/inquiries', dataPayload, {
+        headers: {
+          'Content-Type': 'multipart/form-data', 
+        },
       });
-      const result = await response.json();
 
-      if (response.ok && result.success) {
+      const result = response.data;
+
+      if (response.status === 201 && result.success) {
         setApiResponse({ success: true, details: result.data });
         setFormData({ name: '', phone: '', date: '', guests: 2 });
         setScreenshot(null);
@@ -47,23 +49,25 @@ const TableInquiryForm = () => {
         setApiResponse({ success: false, message: result.message || 'Submission failed.' });
       }
     } catch (err) {
-      setApiResponse({ success: false, message: err.message || 'Server unreachable. Verify port 8000 is running.' });
+      
+      const errMsg = err.response?.data?.message || err.message || 'Server unreachable.';
+      setApiResponse({ success: false, message: errMsg });
     } finally {
       setLoading(false);
     }
   };
 
-  // Fixed class configurations here to match your exact Level 5 CSS declarations
+  
   if (apiResponse?.success) {
     const { name, phone, date, guests, screenshotUrl, _id } = apiResponse.details;
     return (
       <div className="confirmation-card animate-fade-in text-left">
         <div className="success-icon-badge">✓</div>
-        <h3 style={{textAlign: 'center', fontWeight: '800'}}>Booking Confirmed!</h3>
+        <h3 style={{ textAlign: 'center', fontWeight: '800' }}>Booking Confirmed!</h3>
         <p className="section-p-sub" style={{ textAlign: 'center', marginTop: '0.5rem' }}>
           Your inquiry details have been saved directly inside our active management pipeline matrix.
         </p>
-                                                                  
+
         <div className="summary-details-box">
           <p><strong>Inquiry ID:</strong> <span className="mono-text">{_id}</span></p>
           <p><strong>Lead Guest Name:</strong> <span>{name}</span></p>
@@ -74,7 +78,7 @@ const TableInquiryForm = () => {
             <p style={{ border: 'none', padding: '0.5rem 0 0', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <strong>Attached your ID(Aadhaar,Identity) :</strong>
               <a href={screenshotUrl} target="_blank" rel="noreferrer" className="mono-text" style={{ color: 'var(--primary-color)', fontSize: '0.85rem', marginTop: '0.25rem' }}>
-                View Uploaded  File ↗
+                View Uploaded File ↗
               </a>
             </p>
           )}
@@ -91,7 +95,7 @@ const TableInquiryForm = () => {
     <div className="form-wrapper text-left animate-fade-in">
       <h3>Book a Table Inquiry</h3>
       <p className="section-p-sub">Submit reservation data metrics directly to check real-time availability queues.</p>
-      
+
       {apiResponse?.success === false && (
         <div className="alert-danger" role="alert">
           {apiResponse.message}
